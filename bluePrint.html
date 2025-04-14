@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BluePrint</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: #f8f9fc;
+            color: #2d3436;
+            line-height: 1.7;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.05);
+            border: 1px solid #e0e4e8;
+        }
+
+        h1 {
+            color: #2d3436;
+            font-size: 2.4rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 600;
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background: #0984e3;
+            position: absolute;
+            bottom: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        h2 {
+            color: #2d3436;
+            margin: 2rem 0 1.5rem;
+            font-size: 1.4rem;
+            padding-left: 40px;
+            position: relative;
+            font-weight: 500;
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 28px;
+            height: 28px;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="%230984e3" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>');
+            background-size: contain;
+        }
+
+        p {
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+            padding: 1.2rem;
+            background: #f8f9fc;
+            border-radius: 8px;
+            border: 1px solid #e0e4e8;
+        }
+
+        .highlight {
+            color: #0984e3;
+            font-weight: 500;
+            position: relative;
+            padding: 0 2px;
+        }
+
+        .cube-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .cube-element {
+            padding: 1.5rem;
+            background: #f8f9fc;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e0e4e8;
+            transition: transform 0.2s ease;
+        }
+
+        .cube-element:hover {
+            transform: translateY(-3px);
+        }
+
+        .cube-element div {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .bullet-system {
+            list-style: none;
+            padding-left: 0;
+            margin: 2rem 0;
+        }
+
+        .bullet-item {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: #f8f9fc;
+            border-radius: 6px;
+            position: relative;
+            padding-left: 3.5rem;
+            border: 1px solid #e0e4e8;
+        }
+
+        .bullet-item::before {
+            content: '';
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 24px;
+            background: #0984e3;
+            mask: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>');
+            -webkit-mask: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>');
+            background-color: #0984e3;
+        }
+
+        .cta-container {
+            text-align: center;
+            margin: 3rem 0 1rem;
+        }
+
+        .cta-primary {
+            background: linear-gradient(135deg, #0984e3 0%, #6c5ce7 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .cta-primary:hover {
+            box-shadow: 0 6px 20px rgba(9, 132, 227, 0.25);
+            transform: translateY(-1px);
+        }
+
+        .cta-primary:active {
+            transform: translateY(0);
+        }
+
+        .cube-icon {
+            width: 20px;
+            height: 20px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .cube-icon::before {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 60%;
+            border: 2px solid white;
+            border-radius: 2px;
+            top: 20%;
+            left: 20%;
+        }
+
+        @media (max-width: 768px) {
+        .container {
+            padding: 1.5rem 1rem;
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            padding-left: 35px;
+        }
+
+        p {
+            font-size: 1rem;
+            padding: 1rem;
+        }
+
+        .cube-grid {
+            grid-template-columns: 1fr; /* Stack the grid on small screens */
+        }
+
+        .cube-element {
+            padding: 1.2rem;
+        }
+
+        .cta-primary {
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .logo {
+            height: 100px;
+        }
+
+        .nav-links {
+            top: 80px;
+            padding: 1.5rem 0;
+        }
+
+        .bullet-item {
+            padding: 1rem 1rem 1rem 3rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 1.5rem;
+        }
+
+        .cta-primary {
+            font-size: 0.95rem;
+        }
+
+        .cube-element div {
+            font-size: 1.5rem;
+        }
+
+        .nav-links a {
+            font-size: 1rem;
+        }
+
+        .hamburger span {
+            width: 20px;
+            height: 2px;
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BluePrint</h1>
+        
+        <div class="cube-grid">
+            <div class="cube-element">
+                <div>◉</div>
+                <h3>Center Piece</h3>
+                <small>Fixed piece</small>
+            </div>
+            <div class="cube-element">
+                <div>▭</div>
+                <h3>Edge Piece</h3>
+                <small>2 colors</small>
+            </div>
+            <div class="cube-element">
+                <div>▲</div>
+                <h3>Corner Piece</h3>
+                <small>3 color piece</small>
+            </div>
+        </div>
+
+        <h2>Center Piece</h2>
+        <p>The <span class="highlight">center piece</span> has a fixed position and remains in its orignal position.</p>
+
+        <h2>Edge Piece</h2>
+        <p><span class="highlight">Edge piece</span> has 2 colors and is placed between 2 corner pieces.</p>
+
+        <h2>Corner piece</h2>
+        <p><span class="highlight">Corner pieces</span> has 3 colors and a sharp corner.</p>
+
+        <h2>Basic Layers</h2>
+        <ul class="bullet-system">
+            <li class="bullet-item">1. Base Layer</li>
+            <li class="bullet-item">2. Middle Layer</li>
+            <li class="bullet-item">3. Last Layer</li>
+        </ul>
+
+        <div class="cta-container">
+            <button onclick="window.location.href='white_cross.html'" class="cta-primary">
+                <span class="cube-icon"></span>
+                Begin White Cross Tutorial
+                <span class="cube-icon"></span>
+            </button>
+        </div>
+    </div>
+    <script>
+      const hamburger = document.querySelector('.hamburger');
+      const navLinks = document.querySelector('.nav-links');
+      const nav = document.querySelector('nav');
+
+      hamburger.addEventListener('click', () => {
+          hamburger.classList.toggle('active');
+          navLinks.classList.toggle('active');
+      });
+
+      document.addEventListener('click', (e) => {
+          if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+              hamburger.classList.remove('active');
+              navLinks.classList.remove('active');
+          }
+      });
+
+      // Removed scroll behavior for navbar shrinkage
+      window.addEventListener('scroll', () => {
+          // Do nothing here, or remove this function entirely to prevent any scroll effects on the navbar
+      });
+
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+              e.preventDefault();
+              document.querySelector(this.getAttribute('href')).scrollIntoView({
+                  behavior: 'smooth'
+              });
+          });
+      });
+  </script>
+</body>
+</html>

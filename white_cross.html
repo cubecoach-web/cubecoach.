@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>White Cross</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 48px;
+      margin: 40px 20px;
+      font-weight: 800;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 16px;
+    }
+
+    p {
+      text-align: center;
+      font-size: 1.25rem;
+      line-height: 1.6;
+      margin: 20px;
+      font-weight: 500;
+    }
+
+    #img-hold {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    #daisy {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    #mg-b {
+      margin-bottom: 40px;
+      padding-bottom: 40px;
+      border-bottom: 2px solid #ccc;
+    }
+
+    #cross {
+      width: 90%;
+      max-width: 720px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    #con {
+      color: #333;
+      animation: rainbowMove 6s ease infinite;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 60px auto;
+      width: fit-content;
+      padding: 20px 30px;
+      border: 3px dashed #ffe4c4;
+      border-radius: 30px;
+    }
+
+    @keyframes rainbowMove {
+      0% {
+        background-position: 0% 50%;
+      }
+      100% {
+        background-position: 100% 50%;
+      }
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .next-step-button {
+      display: block;
+      margin: 40px auto;
+      padding: 15px 30px;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #fff;
+      background: linear-gradient(135deg, #4CAF50, #81C784);
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: float 2s ease-in-out infinite;
+    }
+
+    .next-step-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    #daisy{
+        width: 200px;
+        height: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Lesson 1: White Cross</h1>
+
+    <p>
+      To begin solving the cross, we'll first create a daisy by aligning <br />
+      all the white edge pieces around the yellow center. <br />
+      This forms a daisy-like figure.
+    </p>
+
+    <div id="img-hold">
+      <img id="daisy" src="images/Daisy.png" alt="Daisy Image">
+    </div>
+
+    <p id="mg-b">Let’s understand how to build it step-by-step.</p>
+
+    <p>
+      Hold the yellow center facing you and align all the white edge pieces. <br /><br />
+      This creates the daisy. Then, rotate each white edge piece <br />
+      twice to move it below its matching center color, forming a perfect white cross.
+    </p>
+
+    <div id="img-hold">
+      <video id="cross" controls muted>
+        <source src="images/WhatsApp Video 2025-04-13 at 9.59.29 PM.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <p id="con"><strong>Congratulations! You’ve just taken the first step<br>in mastering the Rubik’s Cube.</strong></p>
+
+    <button onclick="window.location.href='corners.html'" class="next-step-button">Start Solving the First Layer</button>
+  </div>
+</body>
+</html>
